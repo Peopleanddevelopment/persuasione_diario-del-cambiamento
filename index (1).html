@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="it"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Diario del Cambiamento — Persuasione · Store Leader Academy 2026</title>
+<style>
+:root{
+  --ink:#171513;
+  --black:#111111;
+  --paper:#F8F3EA;
+  --paper-2:#EEE5D7;
+  --paper-3:#E5D7C6;
+  --white:#FFFEFA;
+  --muted:#746B61;
+  --line:#D9CCBB;
+  --burgundy:#6B1D34;
+  --burgundy-2:#8A2C45;
+  --sage:#7F927C;
+  --sage-dark:#526C56;
+  --terracotta:#B66A4A;
+  --sand:#C6A66A;
+  --ok:#52775A;
+  --warn:#9F5B32;
+  --danger:#A33D3D;
+  --shadow:0 22px 70px rgba(31,24,16,.12);
+  --radius:24px;
+  --radius-sm:16px;
+  --header-h:72px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(135deg,var(--white) 0%,var(--paper) 52%,var(--paper-2) 100%);color:var(--ink);min-height:100vh;overflow-x:hidden}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+::selection{background:rgba(107,29,52,.16)}
+.no-print{} 
+.app-shell{min-height:100vh;display:grid;grid-template-rows:auto 1fr}
+.app-header{min-height:var(--header-h);height:auto;position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px clamp(16px,3.5vw,42px);background:rgba(255,254,250,.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(217,204,187,.85)}
+.brand{display:flex;align-items:center;gap:14px;min-width:0}
+.brand-mark{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--burgundy);color:var(--white);font-weight:800;letter-spacing:.02em;flex:0 0 auto}
+.brand-text{display:flex;flex-direction:column;gap:2px;min-width:0}
+.brand-kicker{font-size:10px;line-height:1;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand-title{font-size:16px;line-height:1.1;font-weight:760;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.entry-count{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap;margin-right:2px}
+.btn{border:0;border-radius:999px;padding:11px 18px;font-weight:740;font-size:12px;letter-spacing:.09em;text-transform:uppercase;transition:transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease,color .18s ease;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--burgundy);color:var(--white);box-shadow:0 12px 28px rgba(107,29,52,.22)}
+.btn-primary:hover{background:var(--burgundy-2)}
+.btn-secondary{background:rgba(255,254,250,.5);color:var(--ink);border:1px solid var(--line)}
+.btn-secondary:hover{background:var(--white);border-color:var(--ink)}
+.btn-sage{background:var(--sage-dark);color:var(--white);box-shadow:0 12px 26px rgba(82,108,86,.18)}
+.btn-sage:hover{background:#425C48}
+.btn-light{background:var(--white);color:var(--ink);border:1px solid var(--line)}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.btn-danger{background:rgba(163,61,61,.1);color:var(--danger);border:1px solid rgba(163,61,61,.22)}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+.layout{display:grid;grid-template-columns:minmax(230px,280px) 1fr;min-height:calc(100vh - var(--header-h))}
+.sidebar{border-right:1px solid var(--line);background:rgba(238,229,215,.58);padding:22px 18px;display:flex;flex-direction:column;gap:16px;min-height:calc(100vh - var(--header-h));position:sticky;top:var(--header-h);align-self:start;max-height:calc(100vh - var(--header-h));overflow:auto}
+.side-card{background:rgba(255,254,250,.54);border:1px solid rgba(217,204,187,.8);border-radius:var(--radius-sm);padding:16px}
+.side-title{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--burgundy);font-weight:800;margin-bottom:8px}
+.side-copy{font-size:13px;line-height:1.55;color:var(--muted)}
+.search-input{width:100%;border:1px solid var(--line);background:var(--white);border-radius:12px;padding:11px 12px;outline:none;color:var(--ink);font-size:13px}
+.search-input:focus{border-color:var(--burgundy);box-shadow:0 0 0 4px rgba(107,29,52,.08)}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.filter-chip{border:1px solid var(--line);background:rgba(255,254,250,.72);color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:7px 9px;cursor:pointer}
+.filter-chip.active{background:var(--burgundy);color:var(--white);border-color:var(--burgundy)}
+.entries-list{display:flex;flex-direction:column;gap:8px}
+.entry-row{padding:13px 13px 12px;border:1px solid transparent;border-left:4px solid transparent;background:rgba(255,254,250,.5);border-radius:14px;cursor:pointer;transition:background .16s ease,border-color .16s ease,transform .16s ease}
+.entry-row:hover{background:var(--white);transform:translateX(2px);border-color:rgba(107,29,52,.12)}
+.entry-row.active{background:var(--white);border-color:rgba(107,29,52,.15);border-left-color:var(--burgundy);box-shadow:0 12px 26px rgba(31,24,16,.08)}
+.entry-date{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:5px}
+.entry-preview{font-size:13px;line-height:1.35;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.entry-meta-line{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.mini-badge{font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:4px 7px;border-radius:999px;background:rgba(107,29,52,.09);color:var(--burgundy);font-weight:800}
+.mini-badge.sage{background:rgba(82,108,86,.11);color:var(--sage-dark)}
+.empty-list{padding:18px 8px;text-align:center;color:var(--muted);font-size:13px;line-height:1.5;font-style:italic}
+.main{min-width:0;padding:clamp(18px,4vw,48px);display:flex;justify-content:center}
+.stage{width:min(1180px,100%)}
+.home{display:grid;gap:22px}
+.hero{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(300px,.78fr);gap:22px;align-items:stretch}
+.hero-main{background:var(--burgundy);color:var(--white);border-radius:var(--radius);padding:clamp(26px,4vw,46px);position:relative;overflow:hidden;min-height:360px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:space-between;gap:28px}
+.hero-main:before{content:"";position:absolute;width:280px;height:280px;border-radius:50%;right:-120px;top:-120px;background:rgba(255,254,250,.08)}
+.hero-main:after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;left:-70px;bottom:-70px;background:rgba(198,166,106,.14)}
+.kicker{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:rgba(255,254,250,.62);position:relative;z-index:1}
+.hero h1{font-size:clamp(34px,4.3vw,58px);line-height:.96;letter-spacing:-.045em;max-width:100%;position:relative;z-index:1;margin:16px 0;overflow-wrap:normal;hyphens:none}
+.hero p{font-family:Georgia,"Times New Roman",serif;font-size:clamp(16px,1.55vw,20px);line-height:1.42;color:rgba(255,254,250,.84);max-width:640px;position:relative;z-index:1}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:1;margin-top:12px}
+.hero-side{display:grid;gap:14px}
+.quote-card,.how-card,.privacy-card{border-radius:var(--radius);background:rgba(255,254,250,.72);border:1px solid rgba(217,204,187,.8);padding:24px;box-shadow:0 12px 38px rgba(31,24,16,.08)}
+.quote-card{background:var(--ink);color:var(--white);display:flex;flex-direction:column;justify-content:space-between;gap:22px;min-height:190px;overflow:hidden;position:relative}
+.quote-card:after{content:"“";position:absolute;right:20px;top:-16px;font-family:Georgia,serif;font-size:120px;color:rgba(255,255,255,.08)}
+.quote-text{font-family:Georgia,"Times New Roman",serif;font-size:clamp(17px,1.6vw,20px);line-height:1.35;position:relative;z-index:1}
+.quote-label{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.45);font-weight:800;position:relative;z-index:1}
+.how-card h2,.privacy-card h2{font-size:18px;margin-bottom:12px;letter-spacing:-.02em}
+.bullet-list{display:grid;gap:12px}
+.bullet{display:grid;grid-template-columns:32px 1fr;gap:10px;align-items:start}
+.bullet-num{width:32px;height:32px;border-radius:50%;background:rgba(107,29,52,.1);color:var(--burgundy);display:grid;place-items:center;font-weight:900;font-size:12px}
+.bullet strong{display:block;font-size:13px;margin-bottom:3px;color:var(--ink)}
+.bullet span{display:block;font-size:12.5px;line-height:1.5;color:var(--muted)}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.info-card{background:rgba(255,254,250,.68);border:1px solid var(--line);border-radius:20px;padding:20px;min-height:150px;display:flex;flex-direction:column;gap:12px}
+.info-icon{font-size:24px}
+.info-title{font-size:13px;font-weight:850;color:var(--ink)}
+.info-copy{font-size:12.5px;line-height:1.55;color:var(--muted)}
+.recent-panel{background:rgba(255,254,250,.62);border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:none}
+.recent-panel.has-items{display:block}
+.section-label{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:850;margin-bottom:14px}
+.recent-grid{display:grid;gap:10px}
+.recent-item{border:1px solid var(--line);background:var(--white);border-radius:16px;padding:14px;cursor:pointer;display:grid;grid-template-columns:120px 1fr auto;gap:12px;align-items:center;transition:transform .16s ease,border-color .16s ease}
+.recent-item:hover{transform:translateY(-1px);border-color:var(--burgundy)}
+.recent-date{font-size:11px;color:var(--muted);font-weight:750;letter-spacing:.06em;text-transform:uppercase}
+.recent-title{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink)}
+/* wizard */
+.wizard{background:rgba(255,254,250,.76);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.wizard-head{padding:22px clamp(18px,3vw,34px);background:linear-gradient(135deg,var(--ink),#342A24);color:var(--white);display:grid;grid-template-columns:1fr auto;gap:18px;align-items:end}
+.wizard-head h1{font-size:clamp(25px,3.5vw,42px);line-height:1;letter-spacing:-.045em;margin-top:6px}
+.wizard-head p{font-family:Georgia,"Times New Roman",serif;color:rgba(255,255,255,.72);font-size:14.5px;line-height:1.42;margin-top:8px;max-width:680px}
+.progress-wrap{min-width:190px;display:grid;gap:8px}
+.progress-text{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55);font-weight:800;text-align:right}
+.progress-track{height:7px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--sand),var(--terracotta));border-radius:999px;transition:width .3s ease}
+.step-tabs{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--line);background:rgba(238,229,215,.46);position:sticky;top:var(--header-h);z-index:12;backdrop-filter:blur(12px)}
+.step-tab{padding:14px 10px;text-align:center;border-right:1px solid rgba(217,204,187,.75);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:850}
+.step-tab:last-child{border-right:0}
+.step-tab.active{background:var(--white);color:var(--burgundy)}
+.wizard-body{padding:clamp(18px,3vw,30px);padding-bottom:clamp(24px,4vw,42px)}
+.step{display:none;animation:fadeSlide .25s ease both;scroll-margin-top:calc(var(--header-h) + 58px)}
+.step.active{display:block}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.step-grid{display:grid;grid-template-columns:1fr;gap:16px;align-items:start;max-width:900px;margin:0 auto}
+.step-aside{position:static;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px 18px;display:grid;grid-template-columns:auto 1fr;gap:10px 14px;align-items:start}
+.step-aside .aside-num{font-size:30px;line-height:1;font-weight:900;letter-spacing:-.08em;color:rgba(107,29,52,.24);grid-row:1/3;margin-top:1px}
+.step-aside h2{font-size:20px;line-height:1.1;letter-spacing:-.03em;margin-bottom:4px}
+.step-aside p{font-size:13px;line-height:1.42;color:var(--muted)}
+.micro-quote{grid-column:1/-1;margin-top:4px;padding-top:10px;border-top:1px solid var(--line);font-family:Georgia,"Times New Roman",serif;color:var(--burgundy);font-size:14px;line-height:1.4}
+.fields{display:grid;gap:13px;background:rgba(255,254,250,.78);border:1px solid rgba(217,204,187,.7);border-radius:20px;padding:18px;scroll-margin-top:calc(var(--header-h) + 70px)}
+.field-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.field{display:grid;gap:7px;min-width:0}
+.field label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:850}
+.req:after{content:" *";color:var(--burgundy)}
+.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);background:var(--white);border-radius:15px;padding:13px 14px;color:var(--ink);outline:none;transition:border .17s ease,box-shadow .17s ease,background .17s ease;font-size:14px}
+.field select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 18px) 52%,calc(100% - 13px) 52%;background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:36px}
+.field textarea{min-height:78px;resize:vertical;line-height:1.52}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--burgundy);box-shadow:0 0 0 4px rgba(107,29,52,.08);background:#fff}
+.field input.invalid,.field select.invalid,.field textarea.invalid{border-color:var(--danger);box-shadow:0 0 0 4px rgba(163,61,61,.08)}
+.help{font-size:12px;line-height:1.45;color:var(--muted)}
+.chip-group{display:flex;gap:8px;flex-wrap:wrap}
+.choice-chip{border:1px solid var(--line);background:var(--white);color:var(--ink);border-radius:999px;padding:10px 13px;font-size:12px;line-height:1;font-weight:760;cursor:pointer;transition:background .16s ease,border-color .16s ease,color .16s ease,transform .16s ease;user-select:none}
+.choice-chip:hover{transform:translateY(-1px);border-color:var(--sage-dark)}
+.choice-chip.selected{background:var(--sage-dark);border-color:var(--sage-dark);color:var(--white)}
+.insight-box{border-radius:18px;background:rgba(127,146,124,.12);border:1px solid rgba(127,146,124,.25);padding:16px;font-size:13px;line-height:1.55;color:#3F503F}
+.wizard-actions{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px clamp(18px,3vw,34px);border-top:1px solid var(--line);background:rgba(255,254,250,.92);position:sticky;bottom:0;z-index:15;backdrop-filter:blur(16px);box-shadow:0 -16px 34px rgba(31,24,16,.08)}
+.wizard-actions .right{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+/* entry view */
+.entry-view{display:grid;gap:18px}
+.entry-hero{background:var(--ink);color:var(--white);border-radius:var(--radius);padding:clamp(26px,4vw,46px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end;box-shadow:var(--shadow)}
+.entry-hero h1{font-size:clamp(28px,4.6vw,54px);line-height:1;letter-spacing:-.05em;margin-top:8px;max-width:780px}
+.entry-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.entry-pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.74);font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:850;padding:7px 10px}
+.entry-hero .btn-light{background:rgba(255,255,255,.95)}
+.entry-actions-top{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.entry-content-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,340px);gap:18px;align-items:start}
+.entry-sections{display:grid;gap:12px}
+.view-card{background:rgba(255,254,250,.76);border:1px solid var(--line);border-radius:20px;padding:20px}
+.view-card h3{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--burgundy);margin-bottom:10px}
+.view-card p{font-size:14px;line-height:1.65;color:var(--ink);white-space:pre-wrap}
+.view-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.view-mini{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px}
+.view-mini .label{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:850;margin-bottom:6px}
+.view-mini .value{font-size:13px;line-height:1.5;color:var(--ink);white-space:pre-wrap}
+.side-summary{position:sticky;top:calc(var(--header-h) + 20px);display:grid;gap:12px}
+.summary-card{background:rgba(255,254,250,.82);border:1px solid var(--line);border-radius:20px;padding:20px}
+.summary-card h3{font-size:14px;margin-bottom:10px}
+.action-stack{display:grid;gap:10px}
+.send-flow{background:linear-gradient(135deg,var(--paper),var(--paper-2));border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:grid;gap:16px}
+.send-step{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;border:1px solid var(--line);background:var(--white);border-radius:18px;padding:14px}
+.send-step-num{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(107,29,52,.1);color:var(--burgundy);font-weight:900;font-size:12px}
+.send-step-title{font-size:13px;font-weight:850;color:var(--ink);margin-bottom:2px}
+.send-step-copy{font-size:12px;color:var(--muted);line-height:1.35}
+.final-screen{display:grid;place-items:center;min-height:calc(100vh - var(--header-h) - 96px)}
+.final-card{width:min(680px,100%);background:var(--white);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:clamp(30px,5vw,56px);text-align:center}
+.final-icon{width:70px;height:70px;border-radius:50%;background:rgba(82,108,86,.12);color:var(--sage-dark);display:grid;place-items:center;margin:0 auto 18px;font-size:32px}
+.final-card h1{font-size:clamp(36px,6vw,64px);line-height:.95;letter-spacing:-.06em;margin-bottom:14px}
+.final-card p{font-size:15px;line-height:1.65;color:var(--muted);max-width:520px;margin:0 auto 24px}
+/* modal/toast */
+.modal-backdrop{position:fixed;inset:0;background:rgba(17,17,17,.44);display:none;align-items:center;justify-content:center;padding:20px;z-index:200}
+.modal-backdrop.visible{display:flex}
+.modal{width:min(560px,100%);background:var(--white);border-radius:24px;box-shadow:0 30px 100px rgba(0,0,0,.25);padding:28px;border:1px solid var(--line)}
+.modal h2{font-size:25px;letter-spacing:-.03em;margin-bottom:10px}
+.modal p{font-size:14px;line-height:1.6;color:var(--muted);margin-bottom:16px}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:18px}
+.toast{position:fixed;right:20px;bottom:20px;background:var(--ink);color:var(--white);border-radius:16px;padding:14px 16px;box-shadow:0 18px 60px rgba(0,0,0,.22);z-index:300;max-width:min(420px,calc(100vw - 40px));font-size:13px;line-height:1.45;display:none}
+.toast.visible{display:block;animation:toastIn .2s ease both}
+@keyframes toastIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.hidden{display:none!important}
+
+.guide-cta{display:flex;justify-content:center;margin-top:22px}
+.step-mobile-hint{display:none;font-size:11px;line-height:1.35;color:var(--muted);font-weight:700;margin-top:2px}
+@media(max-width:1320px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:static;max-height:none;min-height:auto;border-right:0;border-bottom:1px solid var(--line);padding:16px clamp(16px,4vw,30px);display:none}
+  .sidebar.mobile-open{display:flex}
+  .main{padding:clamp(16px,4vw,30px)}
+  .hero{grid-template-columns:1fr}
+  .hero-main{min-height:auto}
+  .info-grid{grid-template-columns:1fr}
+  .step-grid{grid-template-columns:1fr}
+  .step-aside{position:static}
+  .entry-content-grid{grid-template-columns:1fr}
+  .side-summary{position:static}
+}
+@media(max-width:720px){
+  :root{--header-h:68px}
+  .app-header{padding:12px 14px}
+  .brand-title{font-size:13px;max-width:150px}
+  .brand-kicker{font-size:8px;max-width:150px}
+  .brand-mark{width:34px;height:34px;font-size:13px}
+  .entry-count{display:none}
+  .header-actions{gap:6px}
+  .header-actions .btn{padding:9px 11px;font-size:10px}
+  .hero h1{font-size:clamp(36px,10vw,50px);line-height:.98}
+  .hero-main,.quote-card,.how-card,.privacy-card,.wizard,.entry-hero,.send-flow,.final-card{border-radius:20px}
+  .field-row{grid-template-columns:1fr}
+  .step-tabs{display:flex;overflow-x:auto;scroll-snap-type:x proximity}
+  .step-tab{padding:10px 12px;font-size:8.5px;min-width:96px;scroll-snap-align:start}
+  .step-aside{padding:14px;grid-template-columns:34px 1fr}
+  .step-aside .aside-num{font-size:26px}
+  .step-aside h2{font-size:18px}
+  .step-aside p{font-size:12.5px}
+  .micro-quote{display:none}
+  .fields{padding:14px;border-radius:18px}
+  .field textarea{min-height:72px}
+  .wizard-head{grid-template-columns:1fr;padding:18px}
+  .wizard-head p{display:none}
+  .wizard-head h1{font-size:26px;line-height:1.05}
+  .progress-wrap{min-width:0}
+  .progress-text{text-align:left}
+  .wizard-actions{align-items:stretch;flex-direction:column;position:sticky;bottom:0}
+  .wizard-actions .right,.wizard-actions .btn{width:100%}
+  .recent-item{grid-template-columns:1fr;gap:6px}
+  .entry-hero{grid-template-columns:1fr;align-items:start}
+  .entry-actions-top{justify-content:flex-start}
+  .view-grid{grid-template-columns:1fr}
+  .send-step{grid-template-columns:34px 1fr;align-items:start}
+  .send-step .btn{grid-column:1/-1;width:100%}
+}
+@media(max-width:640px){
+  .header-actions .btn-ghost{display:none}
+  .brand{gap:10px}
+  .brand-kicker{display:none}
+  .brand-title{max-width:94px;font-size:12px}
+  .header-actions{gap:6px}
+  .header-actions .btn{padding:9px 10px;font-size:9.5px}
+}
+@media(max-width:460px){
+  .main{padding:14px}
+  .hero-main{padding:26px 22px}
+  .quote-text{font-size:18px}
+  .wizard-body{padding:14px 12px 22px}
+  .wizard-head{padding:18px 16px}
+  .wizard-actions{padding:16px}
+  .btn{width:auto;min-height:40px}
+}
+@media print{
+  body{background:#fff!important;color:#000!important}
+  .no-print,.app-header,.sidebar,.entry-actions-top,.side-summary,.send-flow,.toast,.modal-backdrop{display:none!important}
+  .layout{display:block!important}
+  .main{display:block!important;padding:0!important}
+  .stage{width:100%!important}
+  .entry-hero,.view-card,.view-mini{box-shadow:none!important;border:1px solid #bbb!important;background:#fff!important;color:#000!important;break-inside:avoid}
+  .entry-hero{padding:22px!important}
+  .entry-pill{border:1px solid #ddd!important;color:#000!important;background:#fff!important}
+  .entry-content-grid{display:block!important}
+  .view-card,.view-mini{margin-bottom:12px!important}
+}
+</style>
+</head>
+<body>
+<div class="app-shell">
+  <header class="app-header no-print">
+    <div class="brand" onclick="showHome()" style="cursor:pointer">
+      <div class="brand-mark">P</div>
+      <div class="brand-text">
+        <div class="brand-kicker">Store Leader Academy 2026</div>
+        <div class="brand-title">Diario del Cambiamento · Persuasione</div>
+      </div>
+    </div>
+    <div class="header-actions">
+      <span class="entry-count" id="header-count"></span>
+      <button class="btn btn-secondary" onclick="toggleMobileSidebar()">Voci</button>
+      <button class="btn btn-ghost" onclick="showHome()">Home</button>
+      <button class="btn btn-primary" onclick="newReflection()">Nuova riflessione</button>
+    </div>
+  </header>
+  <div class="layout">
+    <aside class="sidebar no-print" id="sidebar">
+      <div class="side-card">
+        <div class="side-title">Le mie riflessioni</div>
+        <div class="side-copy" id="sidebar-sub">0 riflessioni salvate</div>
+        <input class="search-input" id="search-input" type="search" placeholder="Cerca per situazione, tecnica, contesto..." oninput="renderSidebar()">
+        <div class="filters">
+          <button class="filter-chip active" id="filter-all" onclick="setFilter(&#39;all&#39;)">Tutte</button>
+          <button class="filter-chip" id="filter-week" onclick="setFilter(&#39;week&#39;)">Ultimi 7 giorni</button>
+          <button class="filter-chip" id="filter-sent" onclick="setFilter(&#39;sent&#39;)">Inviate</button>
+        </div>
+      </div>
+      <div class="entries-list" id="entries-list"><div class="empty-list">Ancora nessuna riflessione.<br>Inizia dal pulsante “Nuova riflessione”.</div></div>
+      <div class="side-card">
+        <div class="side-title">Nota dati</div>
+        <div class="side-copy">Le riflessioni restano salvate nel browser. Usa sempre lo stesso dispositivo e lo stesso browser per ritrovarle. L’invio finale registra la voce nel file dati dedicato al percorso.</div>
+      </div>
+    </aside>
+    <main class="main" id="main">
+      <div class="stage" id="stage">
+    <section class="home">
+      <div class="hero">
+        <div class="hero-main">
+          <div>
+            <div class="kicker">Persuasione · diario operativo</div>
+            <h1>Diario del Cambiamento</h1>
+            <p>Uno spazio rapido per osservare come applichi le tecniche del percorso: cosa è successo, cosa hai scelto di fare diversamente e quale risultato hai generato.</p>
+          </div>
+          <div class="hero-actions no-print">
+            <button class="btn btn-light" onclick="newReflection()">Nuova riflessione</button>
+            <button class="btn btn-secondary" onclick="showGuide()">Come usarlo</button>
+          </div>
+        </div>
+        <div class="hero-side">
+          <div class="quote-card">
+            <div class="quote-label">Promemoria manageriale</div>
+            <div class="quote-text">Prima di convincere qualcuno, crea le condizioni perché si senta ascoltato.</div>
+          </div>
+          <div class="how-card">
+            <h2>Compila dopo una conversazione reale.</h2>
+            <div class="bullet-list">
+              <div class="bullet"><div class="bullet-num">1</div><div><strong>Scegli il contesto</strong><span>Feedback, briefing, conflitto, coaching, delega o resistenza.</span></div></div>
+              <div class="bullet"><div class="bullet-num">2</div><div><strong>Osserva il cambio</strong><span>Prima cosa avresti fatto? Questa volta cosa hai scelto?</span></div></div>
+              <div class="bullet"><div class="bullet-num">3</div><div><strong>Chiudi con un’azione</strong><span>Una tecnica da riusare entro 48 ore.</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="info-grid">
+        <div class="info-card"><div class="info-icon">✦</div><div class="info-title">Un’unica voce guidata</div><div class="info-copy">Non c’è più distinzione tra voce breve e completa: il flusso è unico, veloce e modulare.</div></div>
+        <div class="info-card"><div class="info-icon">⌁</div><div class="info-title">Meno testo libero</div><div class="info-copy">Menu, chip e campi brevi rendono più semplice compilare anche da iPad o cellulare.</div></div>
+        <div class="info-card"><div class="info-icon">↗</div><div class="info-title">Invio dati integrato</div><div class="info-copy">Quando confermi, la riflessione viene inviata al file dati dedicato al percorso.</div></div>
+      </div>
+      <div class="privacy-card">
+        <h2>Come ritrovare le tue riflessioni</h2>
+        <div class="info-copy">Le voci restano salvate nel browser. Per vedere la cronologia usa sempre lo stesso link, lo stesso dispositivo e lo stesso browser. L’invio definitivo registra la riflessione nel file dati dedicato al percorso.</div>
+      </div>
+      <div class="recent-panel ">
+        <div class="section-label">Ultime riflessioni</div>
+        <div class="recent-grid">
+          
+        </div>
+      </div>
+    </section></div>
+    </main>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal-backdrop">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <h2 id="modal-title"></h2>
+    <p id="modal-copy"></p>
+    <div id="modal-extra"></div>
+    <div class="modal-actions" id="modal-actions"></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const SUBMISSION_ENDPOINT_URL = 'https://f64e537a8be94b0ab6d276748c9434.85.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/f456f79783d44b8ea9d715e8fbeeed12/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=zivgQO2JFBOHGB5F2ZQ7fLKeTsEvR9kuRR5sDODYiyY';
+const STORAGE_KEY = 'persuasione_diario_reflections_v1';
+const LEGACY_KEY = 'persuasione_diario';
+const PAGE_URL = '';
+
+const CONFIG = {
+  sessions:[
+    'Live 1 · Arte della critica','Live 2 · Holding Space','Live 3 · PNL e potere delle parole','Live 4 · Reframing','Live 5 · Cambio di prospettiva','Tra una sessione e l’altra','Post-corso / applicazione sul campo'
+  ],
+  contexts:['Briefing pre-apertura','Feedback individuale','Gestione conflitto o tensione','Delega o assegnazione attività','Conversazione di coaching','Resistenza al cambiamento','Cliente / servizio','Turni o organizzazione','KPI / performance','Visita HR o Area Manager','Altro'],
+  audiences:['Collaboratore/trice','Team completo','Responsabile / Area Manager','HR di zona','Pari ruolo','Cliente','Altro'],
+  objectives:['Ottenere adesione','Chiarire una aspettativa','Ridurre una resistenza','Dare feedback costruttivo','Rinforzare un comportamento positivo','Riformulare un problema','Ascoltare senza risolvere subito','Delegare spiegando il perché','Generare una nuova prospettiva','Altro'],
+  emotions:['Calma','Tensione','Urgenza','Frustrazione','Dubbio','Fiducia','Energia','Preoccupazione','Soddisfazione','Apertura','Altro'],
+  outcomes:['Maggiore apertura','Collaborazione aumentata','Tensione ridotta','Chiarezza raggiunta','Adesione parziale','Resistenza ancora presente','Nessun cambiamento evidente','Da rivedere nella prossima conversazione'],
+  techniques:['SBI · Situazione-Comportamento-Impatto','Regola dei 3 secondi','Ascolto attivo','Holding Space','Domande aperte','Validazione emozionale','Sospensione del giudizio','Ricalco e riformulazione','Linguaggio positivo / PNL','Sistemi rappresentazionali','Reframing','R.E.F.R.A.M.E.+','Fatti vs interpretazioni','3 posizioni percettive','Instant coaching','Delega con il perché','Vocabolario della crescita'],
+  changesMe:['Più calma/o','Più chiara/o','Più paziente','Più strategica/o','Più capace di ascoltare','Meno reattiva/o','Più orientata/o alla collaborazione','Più consapevole delle parole'],
+  changesOthers:['Maggiore apertura','Meno resistenza','Più collaborazione','Maggiore fiducia','Migliore ascolto','Meno conflitto','Più chiarezza sulle priorità','Più autonomia'],
+  quotes:[
+    'Non reagiamo solo ai fatti: reagiamo al significato che attribuiamo ai fatti.',
+    'La persuasione efficace non forza: crea spazio, direzione e scelta.',
+    'Prima di convincere qualcuno, crea le condizioni perché si senta ascoltato.',
+    'Cambiare cornice non significa negare la realtà. Significa scegliere una risposta più utile.',
+    'Una buona domanda può spostare più energia di una lunga spiegazione.',
+    'Ogni conversazione è un micro-allenamento: osserva, scegli, migliora.'
+  ]
+};
+
+let activeId = null;
+let currentFilter = 'all';
+let currentStep = 0;
+
+function safeParse(str, fallback){ try{return JSON.parse(str || '');}catch(e){return fallback;} }
+function uid(){ return 'dp_' + Date.now() + '_' + Math.random().toString(16).slice(2,8); }
+function today(){ return new Date().toISOString().slice(0,10); }
+function nowIso(){ return new Date().toISOString(); }
+function formatDate(dateStr){
+  if(!dateStr) return '—';
+  try{return new Date(dateStr + 'T12:00:00').toLocaleDateString('it-IT',{day:'2-digit',month:'short',year:'numeric'});}catch(e){return dateStr;}
+}
+function escapeHtml(str){
+  return String(str ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+}
+function val(id){ return document.getElementById(id)?.value?.trim() || ''; }
+function selectedChips(group){ return [...document.querySelectorAll(`[data-chip-group="${group}"].selected`)].map(el=>el.dataset.value); }
+function setToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('visible');
+  clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>t.classList.remove('visible'),3800);
+}
+
+function loadEntries(){
+  const current = safeParse(localStorage.getItem(STORAGE_KEY), null);
+  if(Array.isArray(current)) return current;
+  const legacy = safeParse(localStorage.getItem(LEGACY_KEY), []);
+  if(Array.isArray(legacy) && legacy.length){
+    const migrated = legacy.map(migrateLegacyEntry);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
+    return migrated;
+  }
+  return [];
+}
+function saveEntries(entries){ localStorage.setItem(STORAGE_KEY, JSON.stringify(entries)); }
+function migrateLegacyEntry(e){
+  const techniques = Array.isArray(e.tecniche) ? e.tecniche : (e.tecnica ? [e.tecnica] : []);
+  return {
+    id:e.id || uid(), createdAt:e.createdAt || nowIso(), sentAt:e.sentAt || '',
+    employeeCode:e.employeeCode || '', store:e.store || '', date:e.date || today(), session:e.week || '', context:e.context || '', audience:'', objective:'',
+    situation:e.situazione || '', fact:'', automaticReading:'', emotion:'', techniques,
+    before:e.prima || '', chosenAction:e.dopo || e.diverso || '', othersReaction:e.reazione || e.osservazioniAltri || '', result:e.risultato || '',
+    changesMe:Array.isArray(e.cambIo)?e.cambIo:[], changesOthers:Array.isArray(e.cambAltri)?e.cambAltri:[], worked:e.funzionato || '', improve:e.migliorare || '',
+    learning:e.apprendimento || e.imparato || '', nextAction:e.azione || '', notes:e.esempiIo || ''
+  };
+}
+
+function init(){
+  renderSidebar();
+  showHome();
+}
+window.addEventListener('DOMContentLoaded', init);
+
+function toggleMobileSidebar(){ document.getElementById('sidebar').classList.toggle('mobile-open'); }
+function setFilter(f){
+  currentFilter=f;
+  ['all','week','sent'].forEach(k=>document.getElementById('filter-'+k)?.classList.toggle('active',k===f));
+  renderSidebar();
+}
+function filterEntries(entries){
+  const q=(document.getElementById('search-input')?.value || '').toLowerCase().trim();
+  const weekAgo = new Date(); weekAgo.setDate(weekAgo.getDate()-7);
+  return entries.filter(e=>{
+    if(currentFilter==='week' && new Date(e.date+'T12:00:00') < weekAgo) return false;
+    if(currentFilter==='sent' && !e.sentAt) return false;
+    if(!q) return true;
+    const hay=[e.situation,e.context,e.objective,e.session,e.result,e.learning,(e.techniques||[]).join(' ')].join(' ').toLowerCase();
+    return hay.includes(q);
+  });
+}
+function renderSidebar(){
+  const entries=loadEntries().sort((a,b)=>new Date(b.date||0)-new Date(a.date||0) || String(b.createdAt).localeCompare(String(a.createdAt)));
+  const filtered=filterEntries(entries);
+  const list=document.getElementById('entries-list');
+  const sub=document.getElementById('sidebar-sub');
+  const header=document.getElementById('header-count');
+  if(sub) sub.textContent = `${entries.length} ${entries.length===1?'riflessione salvata':'riflessioni salvate'}`;
+  if(header) header.textContent = entries.length ? `${entries.length} ${entries.length===1?'voce':'voci'}` : '';
+  if(!list) return;
+  if(!filtered.length){
+    list.innerHTML = `<div class="empty-list">${entries.length?'Nessuna riflessione con questo filtro.':'Ancora nessuna riflessione.<br>Inizia dal pulsante “Nuova riflessione”.'}</div>`;
+    return;
+  }
+  list.innerHTML=filtered.map(e=>`
+    <div class="entry-row ${activeId===e.id?'active':''}" onclick="viewEntry('${e.id}')">
+      <div class="entry-date">${formatDate(e.date)}${e.sentAt?' · inviata':''}</div>
+      <div class="entry-preview">${escapeHtml(e.situation || e.objective || 'Riflessione senza titolo')}</div>
+      <div class="entry-meta-line">
+        ${e.context?`<span class="mini-badge">${escapeHtml(e.context)}</span>`:''}
+        ${e.techniques?.[0]?`<span class="mini-badge sage">${escapeHtml(e.techniques[0].split('·')[0].trim())}</span>`:''}
+      </div>
+    </div>`).join('');
+}
+
+function randomQuote(){ return CONFIG.quotes[Math.floor(Math.random()*CONFIG.quotes.length)]; }
+function showHome(){
+  activeId=null; currentStep=0; renderSidebar();
+  const entries=loadEntries().sort((a,b)=>new Date(b.date||0)-new Date(a.date||0) || String(b.createdAt).localeCompare(String(a.createdAt))).slice(0,4);
+  document.getElementById('stage').innerHTML = `
+    <section class="home">
+      <div class="hero">
+        <div class="hero-main">
+          <div>
+            <div class="kicker">Persuasione · diario operativo</div>
+            <h1>Diario del Cambiamento</h1>
+            <p>Uno spazio rapido per osservare come applichi le tecniche del percorso: cosa è successo, cosa hai scelto di fare diversamente e quale risultato hai generato.</p>
+          </div>
+          <div class="hero-actions no-print">
+            <button class="btn btn-light" onclick="newReflection()">Nuova riflessione</button>
+            <button class="btn btn-secondary" onclick="showGuide()">Come usarlo</button>
+          </div>
+        </div>
+        <div class="hero-side">
+          <div class="quote-card">
+            <div class="quote-label">Promemoria manageriale</div>
+            <div class="quote-text">${escapeHtml(randomQuote())}</div>
+          </div>
+          <div class="how-card">
+            <h2>Compila dopo una conversazione reale.</h2>
+            <div class="bullet-list">
+              <div class="bullet"><div class="bullet-num">1</div><div><strong>Scegli il contesto</strong><span>Feedback, briefing, conflitto, coaching, delega o resistenza.</span></div></div>
+              <div class="bullet"><div class="bullet-num">2</div><div><strong>Osserva il cambio</strong><span>Prima cosa avresti fatto? Questa volta cosa hai scelto?</span></div></div>
+              <div class="bullet"><div class="bullet-num">3</div><div><strong>Chiudi con un’azione</strong><span>Una tecnica da riusare entro 48 ore.</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="info-grid">
+        <div class="info-card"><div class="info-icon">✦</div><div class="info-title">Un’unica voce guidata</div><div class="info-copy">Non c’è più distinzione tra voce breve e completa: il flusso è unico, veloce e modulare.</div></div>
+        <div class="info-card"><div class="info-icon">⌁</div><div class="info-title">Meno testo libero</div><div class="info-copy">Menu, chip e campi brevi rendono più semplice compilare anche da iPad o cellulare.</div></div>
+        <div class="info-card"><div class="info-icon">↗</div><div class="info-title">Invio dati integrato</div><div class="info-copy">Quando confermi, la riflessione viene inviata al file dati dedicato al percorso.</div></div>
+      </div>
+      <div class="privacy-card">
+        <h2>Come ritrovare le tue riflessioni</h2>
+        <div class="info-copy">Le voci restano salvate nel browser. Per vedere la cronologia usa sempre lo stesso link, lo stesso dispositivo e lo stesso browser. L’invio definitivo registra la riflessione nel file dati dedicato al percorso.</div>
+      </div>
+      <div class="recent-panel ${entries.length?'has-items':''}">
+        <div class="section-label">Ultime riflessioni</div>
+        <div class="recent-grid">
+          ${entries.map(e=>`<div class="recent-item" onclick="viewEntry('${e.id}')"><div class="recent-date">${formatDate(e.date)}</div><div class="recent-title">${escapeHtml(e.situation || e.objective || 'Riflessione')}</div><span class="mini-badge ${e.sentAt?'sage':''}">${e.sentAt?'Inviata':'Salvata'}</span></div>`).join('')}
+        </div>
+      </div>
+    </section>`;
+}
+
+function showGuide(){
+  document.getElementById('stage').innerHTML = `
+  <section class="wizard">
+    <div class="wizard-head">
+      <div><div class="kicker">Come usare il diario</div><h1>Allenare significa osservare.</h1><p>Compila il diario dalla prima live in poi, dopo episodi reali: una conversazione difficile, un feedback, una resistenza, una delega, un cambio di prospettiva. Non cercare la voce perfetta: cerca un apprendimento utile.</p></div>
+    </div>
+    <div class="wizard-body">
+      <div class="info-grid">
+        <div class="info-card"><div class="info-icon">01</div><div class="info-title">Quando compilarlo</div><div class="info-copy">Dalla prima live in poi, dopo una situazione concreta in cui hai provato una tecnica di persuasione, ascolto, reframing o feedback.</div></div>
+        <div class="info-card"><div class="info-icon">02</div><div class="info-title">Quanto scrivere</div><div class="info-copy">Frasi brevi e osservabili. Il valore non è la lunghezza, ma la qualità della riflessione.</div></div>
+        <div class="info-card"><div class="info-icon">03</div><div class="info-title">Perché inviarlo</div><div class="info-copy">I dati inviati aiuteranno a leggere trend aggregati e migliorare il percorso formativo.</div></div>
+      </div>
+      <div class="insight-box" style="margin-top:18px"><strong>Da attenzionare:</strong> per ritrovare la cronologia locale usa sempre lo stesso browser. Se cambi dispositivo, le voci già salvate nel browser precedente non saranno visibili.</div>
+      <div class="guide-cta no-print"><button class="btn btn-primary" onclick="newReflection()">Avvia riflessione</button></div>
+    </div>
+  </section>`;
+  requestAnimationFrame(()=>document.querySelector('.wizard')?.scrollIntoView({behavior:'smooth',block:'start'}));
+}
+
+function optionsHtml(options){ return options.map(o=>`<option value="${escapeHtml(o)}">${escapeHtml(o)}</option>`).join(''); }
+function chipHtml(group, options){ return options.map(o=>`<button type="button" class="choice-chip" data-chip-group="${group}" data-value="${escapeHtml(o)}" onclick="toggleChip(this)">${escapeHtml(o)}</button>`).join(''); }
+function toggleChip(el){ el.classList.toggle('selected'); }
+
+function newReflection(){
+  activeId=null; currentStep=0; renderSidebar();
+  document.getElementById('stage').innerHTML = `
+  <form class="wizard" id="reflection-form" onsubmit="event.preventDefault();saveReflection();">
+    <div class="wizard-head">
+      <div><div class="kicker">Nuova riflessione</div><h1>Che cosa è cambiato nella tua conversazione?</h1><p>Compila una voce unica, guidata e veloce. Usa frasi semplici: fatto, scelta, risultato, prossima azione.</p></div>
+      <div class="progress-wrap no-print"><div class="progress-text" id="progress-text">Step 1 di 5</div><div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:20%"></div></div></div>
+    </div>
+    <div class="step-tabs no-print" id="step-tabs">
+      <div class="step-tab active">Contesto</div><div class="step-tab">Fatto</div><div class="step-tab">Tecniche</div><div class="step-tab">Cambio</div><div class="step-tab">Azione</div>
+    </div>
+    <div class="wizard-body">
+      <section class="step active" data-step="0">
+        <div class="step-grid">
+          <aside class="step-aside"><div class="aside-num">01</div><h2>Contesto e intenzione</h2><p>Prima di analizzare, colloca la conversazione: con chi, quando, quale obiettivo avevi.</p><div class="micro-quote">“La chiarezza dell’intenzione cambia la qualità della comunicazione.”</div></aside>
+          <div class="fields">
+            <div class="field-row"><div class="field"><label class="req" for="f-employee">Codice dipendente</label><input id="f-employee" autocomplete="off" placeholder="Es. 123456"></div><div class="field"><label for="f-store">Negozio / area</label><input id="f-store" placeholder="Es. Zara Milano / Area ..."></div></div>
+            <div class="field-row"><div class="field"><label class="req" for="f-date">Data</label><input id="f-date" type="date" value="${today()}"></div><div class="field"><label for="f-session">Momento del percorso</label><select id="f-session"><option value="">— seleziona —</option>${optionsHtml(CONFIG.sessions)}</select></div></div>
+            <div class="field-row"><div class="field"><label class="req" for="f-context">Contesto</label><select id="f-context"><option value="">— seleziona —</option>${optionsHtml(CONFIG.contexts)}</select></div><div class="field"><label for="f-audience">Con chi</label><select id="f-audience"><option value="">— seleziona —</option>${optionsHtml(CONFIG.audiences)}</select></div></div>
+            <div class="field"><label class="req" for="f-objective">Obiettivo della conversazione</label><select id="f-objective"><option value="">— seleziona —</option>${optionsHtml(CONFIG.objectives)}</select></div>
+          </div>
+        </div>
+      </section>
+      <section class="step" data-step="1">
+        <div class="step-grid">
+          <aside class="step-aside"><div class="aside-num">02</div><h2>Fatto, lettura, emozione</h2><p>Separa ciò che è osservabile da ciò che hai interpretato. È il primo passo del cambio di prospettiva.</p><div class="micro-quote">“Rallentare la reazione automatica crea spazio per una risposta più utile.”</div></aside>
+          <div class="fields">
+            <div class="field"><label class="req" for="f-situation">Situazione vissuta</label><textarea id="f-situation" placeholder="Che cosa è successo, in breve?"></textarea></div>
+            <div class="field"><label for="f-fact">Fatto osservabile</label><textarea id="f-fact" placeholder="Qual è il fatto che chiunque avrebbe potuto osservare?"></textarea></div>
+            <div class="field-row"><div class="field"><label for="f-reading">Interpretazione automatica</label><textarea id="f-reading" placeholder="Che significato gli hai attribuito subito?"></textarea></div><div class="field"><label for="f-emotion">Emozione dominante</label><select id="f-emotion"><option value="">— seleziona —</option>${optionsHtml(CONFIG.emotions)}</select></div></div>
+            <div class="insight-box">Domanda guida: “È un fatto, una mia interpretazione o un giudizio?”</div>
+          </div>
+        </div>
+      </section>
+      <section class="step" data-step="2">
+        <div class="step-grid">
+          <aside class="step-aside"><div class="aside-num">03</div><h2>Leva allenata</h2><p>Scegli le tecniche che hai provato. Non devono essere tante: conta la consapevolezza con cui le hai usate.</p><div class="micro-quote">“Una tecnica diventa competenza quando la riconosci mentre la usi.”</div></aside>
+          <div class="fields">
+            <div class="field"><label>Tecniche utilizzate</label><div class="chip-group">${chipHtml('techniques', CONFIG.techniques)}</div><div class="help">Seleziona una o più leve del percorso Persuasione.</div></div>
+            <div class="field"><label>Cambiamenti che hai notato in te</label><div class="chip-group">${chipHtml('changesMe', CONFIG.changesMe)}</div></div>
+            <div class="field"><label>Cambiamenti che hai notato negli altri</label><div class="chip-group">${chipHtml('changesOthers', CONFIG.changesOthers)}</div></div>
+          </div>
+        </div>
+      </section>
+      <section class="step" data-step="3">
+        <div class="step-grid">
+          <aside class="step-aside"><div class="aside-num">04</div><h2>Prima / questa volta</h2><p>Qui si vede il trasferimento: che automatismo hai lasciato e quale comportamento hai scelto?</p><div class="micro-quote">“Il cambiamento si vede quando scegli una risposta diversa in una situazione reale.”</div></aside>
+          <div class="fields">
+            <div class="field"><label for="f-before">Prima avrei...</label><textarea id="f-before" placeholder="Come avresti reagito prima del percorso?"></textarea></div>
+            <div class="field"><label class="req" for="f-action">Questa volta invece ho scelto di...</label><textarea id="f-action" placeholder="Che cosa hai fatto o detto di diverso?"></textarea></div>
+            <div class="field-row"><div class="field"><label for="f-reaction">Reazione degli altri</label><textarea id="f-reaction" placeholder="Che cosa hai osservato nell’interlocutore o nel team?"></textarea></div><div class="field"><label for="f-result">Risultato</label><select id="f-result"><option value="">— seleziona —</option>${optionsHtml(CONFIG.outcomes)}</select></div></div>
+          </div>
+        </div>
+      </section>
+      <section class="step" data-step="4">
+        <div class="step-grid">
+          <aside class="step-aside"><div class="aside-num">05</div><h2>Apprendimento e prossima azione</h2><p>Chiudi con un micro-impegno. Il diario serve a rendere visibile il miglioramento nel tempo.</p><div class="micro-quote">“Porto via, lascio, applico: il cambiamento resta quando diventa pratica.”</div></aside>
+          <div class="fields">
+            <div class="field-row"><div class="field"><label for="f-worked">Cosa ha funzionato</label><textarea id="f-worked" placeholder="Quale scelta ha avuto più impatto?"></textarea></div><div class="field"><label for="f-improve">Cosa posso migliorare</label><textarea id="f-improve" placeholder="Cosa rifaresti in modo diverso?"></textarea></div></div>
+            <div class="field"><label class="req" for="f-learning">Apprendimento principale</label><textarea id="f-learning" placeholder="La cosa più importante che ho capito è..."></textarea></div>
+            <div class="field"><label class="req" for="f-next">Azione concreta entro 48 ore</label><textarea id="f-next" placeholder="Nella prossima situazione simile voglio..."></textarea></div>
+            <div class="field"><label for="f-notes">Note personali</label><textarea id="f-notes" placeholder="Appunti liberi, parole chiave, domande da portare in sessione..."></textarea></div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="wizard-actions no-print">
+      <button type="button" class="btn btn-secondary" onclick="prevStep()" id="btn-prev" disabled>Indietro</button>
+      <div class="right"><button type="button" class="btn btn-ghost" onclick="confirmCancelDraft()">Annulla</button><button type="button" class="btn btn-primary" onclick="nextStep()" id="btn-next">Avanti · Fatto</button><button type="submit" class="btn btn-sage hidden" id="btn-save">Salva riflessione</button></div>
+    </div>
+  </form>`;
+  requestAnimationFrame(()=>document.querySelector('.wizard-body')?.scrollIntoView({behavior:'smooth',block:'start'}));
+}
+function updateStepUi(){
+  document.querySelectorAll('.step').forEach((s,i)=>s.classList.toggle('active',i===currentStep));
+  document.querySelectorAll('.step-tab').forEach((s,i)=>s.classList.toggle('active',i===currentStep));
+  const pct=((currentStep+1)/5)*100;
+  const labels=['Contesto','Fatto','Tecniche','Cambio','Azione'];
+  document.getElementById('progress-fill').style.width=pct+'%';
+  document.getElementById('progress-text').textContent=`Step ${currentStep+1} di 5 · ${labels[currentStep]}`;
+  document.getElementById('btn-prev').disabled=currentStep===0;
+  const nextBtn=document.getElementById('btn-next');
+  nextBtn.classList.toggle('hidden',currentStep===4);
+  nextBtn.textContent=currentStep<4 ? `Avanti · ${labels[currentStep+1]}` : 'Avanti';
+  document.getElementById('btn-save').classList.toggle('hidden',currentStep!==4);
+  scrollCurrentStepIntoView();
+}
+function scrollCurrentStepIntoView(){
+  const active=document.querySelector('.step.active');
+  const target=active?.querySelector('.fields') || active || document.querySelector('.wizard-body');
+  requestAnimationFrame(()=>target?.scrollIntoView({behavior:'smooth',block:'start'}));
+}
+function validateStep(step){
+  const ids = step===0 ? ['f-employee','f-date','f-context','f-objective'] : step===1 ? ['f-situation'] : step===3 ? ['f-action'] : step===4 ? ['f-learning','f-next'] : [];
+  let ok=true;
+  ids.forEach(id=>{const el=document.getElementById(id); if(el){ const valid=!!el.value.trim(); el.classList.toggle('invalid',!valid); if(!valid) ok=false; }});
+  if(!ok) setToast('Completa i campi obbligatori prima di continuare.');
+  return ok;
+}
+function nextStep(){ if(!validateStep(currentStep)) return; if(currentStep<4){currentStep++; updateStepUi();} }
+function prevStep(){ if(currentStep>0){currentStep--; updateStepUi();} }
+function confirmCancelDraft(){
+  openModal('Annullare la riflessione?', 'Se esci ora, i dati inseriti in questa nuova voce non verranno salvati.', '', [
+    {label:'Continua a compilare', kind:'secondary', action:closeModal},
+    {label:'Annulla voce', kind:'danger', action:()=>{closeModal();showHome();}}
+  ]);
+}
+function collectForm(){
+  return {
+    id:uid(), createdAt:nowIso(), sentAt:'',
+    employeeCode:val('f-employee'), store:val('f-store'), date:val('f-date') || today(), session:val('f-session'), context:val('f-context'), audience:val('f-audience'), objective:val('f-objective'),
+    situation:val('f-situation'), fact:val('f-fact'), automaticReading:val('f-reading'), emotion:val('f-emotion'),
+    techniques:selectedChips('techniques'), changesMe:selectedChips('changesMe'), changesOthers:selectedChips('changesOthers'),
+    before:val('f-before'), chosenAction:val('f-action'), othersReaction:val('f-reaction'), result:val('f-result'),
+    worked:val('f-worked'), improve:val('f-improve'), learning:val('f-learning'), nextAction:val('f-next'), notes:val('f-notes')
+  };
+}
+function saveReflection(){
+  if(!validateStep(4)) return;
+  const entry=collectForm();
+  const entries=loadEntries(); entries.push(entry); saveEntries(entries); activeId=entry.id; renderSidebar();
+  setToast('Riflessione salvata nel diario.');
+  viewEntry(entry.id);
+}
+
+function findEntry(id){ return loadEntries().find(e=>e.id===id); }
+function viewEntry(id){
+  const e=findEntry(id); if(!e){showHome();return;}
+  activeId=id; renderSidebar();
+  document.getElementById('stage').innerHTML = `
+    <section class="entry-view">
+      <div class="entry-hero">
+        <div>
+          <div class="entry-meta">
+            <span class="entry-pill">${formatDate(e.date)}</span>
+            ${e.session?`<span class="entry-pill">${escapeHtml(e.session)}</span>`:''}
+            ${e.context?`<span class="entry-pill">${escapeHtml(e.context)}</span>`:''}
+            ${e.sentAt?`<span class="entry-pill">Dati inviati</span>`:''}
+          </div>
+          <div class="kicker">Riflessione salvata</div>
+          <h1>${escapeHtml(e.situation || e.objective || 'Diario del cambiamento')}</h1>
+        </div>
+        <div class="entry-actions-top no-print"><button class="btn btn-light" onclick="newReflection()">Nuova</button><button class="btn btn-ghost" onclick="deleteEntry('${e.id}')">Elimina</button></div>
+      </div>
+      <div class="entry-content-grid">
+        <div class="entry-sections">
+          <div class="view-grid">
+            ${miniView('Codice dipendente', e.employeeCode)}${miniView('Negozio / area', e.store)}${miniView('Con chi', e.audience)}${miniView('Obiettivo', e.objective)}
+          </div>
+          ${cardView('01 · Fatto osservabile', e.fact)}
+          ${cardView('02 · Interpretazione automatica', e.automaticReading)}
+          ${cardView('03 · Prima avrei...', e.before)}
+          ${cardView('04 · Questa volta ho scelto di...', e.chosenAction)}
+          <div class="view-grid">${miniView('Emozione dominante', e.emotion)}${miniView('Risultato', e.result)}</div>
+          ${cardView('05 · Reazione degli altri', e.othersReaction)}
+          ${chipView('Tecniche allenate', e.techniques)}
+          ${chipView('Cambiamenti in me', e.changesMe)}
+          ${chipView('Cambiamenti negli altri', e.changesOthers)}
+          ${cardView('06 · Cosa ha funzionato', e.worked)}
+          ${cardView('07 · Cosa posso migliorare', e.improve)}
+          ${cardView('08 · Apprendimento principale', e.learning)}
+          ${cardView('09 · Azione concreta entro 48 ore', e.nextAction)}
+          ${e.notes?cardView('Note personali', e.notes):''}
+          ${sendFlowHtml(e)}
+        </div>
+        <aside class="side-summary no-print">
+          <div class="summary-card">
+            <h3>Chiusura della voce</h3>
+            <div class="action-stack">
+              <button class="btn btn-secondary" onclick="window.print()">Scarica PDF · facoltativo</button>
+              <button class="btn btn-secondary" onclick="openHrModal('${e.id}')">Invia al tuo HR · facoltativo</button>
+              <button class="btn btn-primary" onclick="scrollToSendFlow()">Avanti</button>
+            </div>
+          </div>
+          <div class="summary-card">
+            <h3>Consiglio</h3>
+            <p class="info-copy">Rileggi questa voce prima della prossima sessione live: cerca il pattern che si ripete e una tecnica da allenare ancora.</p>
+          </div>
+        </aside>
+      </div>
+    </section>`;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function miniView(label,value){ return `<div class="view-mini"><div class="label">${escapeHtml(label)}</div><div class="value">${escapeHtml(value || '—')}</div></div>`; }
+function cardView(title,value){ return `<div class="view-card"><h3>${escapeHtml(title)}</h3><p>${escapeHtml(value || '—')}</p></div>`; }
+function chipView(title,items){
+  const arr=Array.isArray(items)?items:[];
+  return `<div class="view-card"><h3>${escapeHtml(title)}</h3>${arr.length?`<div class="chip-group">${arr.map(x=>`<span class="choice-chip selected">${escapeHtml(x)}</span>`).join('')}</div>`:'<p>—</p>'}</div>`;
+}
+function sendFlowHtml(e){
+  return `<div class="send-flow no-print" id="send-flow">
+    <div><div class="section-label">Invio e chiusura</div><div class="info-copy">Segui l’ordine: PDF e HR sono facoltativi; l’invio dati definitivo registra la riflessione nel file dati dedicato al percorso.</div></div>
+    <div class="send-step"><div class="send-step-num">1</div><div><div class="send-step-title">Scarica PDF</div><div class="send-step-copy">Facoltativo: salva una copia personale della riflessione.</div></div><button class="btn btn-secondary" onclick="window.print()">Scarica PDF</button></div>
+    <div class="send-step"><div class="send-step-num">2</div><div><div class="send-step-title">Invia al tuo HR</div><div class="send-step-copy">Facoltativo: apre una mail con il riepilogo della voce.</div></div><button class="btn btn-secondary" onclick="openHrModal('${e.id}')">Invia HR</button></div>
+    <div class="send-step"><div class="send-step-num">3</div><div><div class="send-step-title">Avanti</div><div class="send-step-copy">Passa all’invio definitivo dei dati.</div></div><button class="btn btn-primary" onclick="openSubmitModal('${e.id}')">Avanti</button></div>
+    <div class="send-step"><div class="send-step-num">4</div><div><div class="send-step-title">Invia dati definitivamente</div><div class="send-step-copy">${e.sentAt?'Questa voce risulta già inviata.':'Conferma la registrazione definitiva della riflessione.'}</div></div><button class="btn btn-sage" onclick="openSubmitModal('${e.id}')">Invia dati</button></div>
+  </div>`;
+}
+function scrollToSendFlow(){ document.getElementById('send-flow')?.scrollIntoView({behavior:'smooth',block:'start'}); }
+
+function payloadForEntry(e){
+  return {
+    submission_id:`diario-persuasione-${e.id}`,
+    survey_id:'diario_persuasione',
+    survey_title:'Diario del Cambiamento - Persuasione',
+    entry_id:e.id,
+    employee_code:e.employeeCode || '', store:e.store || '', entry_date:e.date || '', created_at:e.createdAt || '', submitted_at:nowIso(),
+    session:e.session || '', context:e.context || '', audience:e.audience || '', objective:e.objective || '', emotion:e.emotion || '',
+    situation:e.situation || '', fact:e.fact || '', automatic_reading:e.automaticReading || '', before:e.before || '', chosen_action:e.chosenAction || '',
+    others_reaction:e.othersReaction || '', result:e.result || '', worked:e.worked || '', improve:e.improve || '', learning:e.learning || '', next_action:e.nextAction || '', notes:e.notes || '',
+    techniques:(e.techniques || []).join(' | '), changes_me:(e.changesMe || []).join(' | '), changes_others:(e.changesOthers || []).join(' | '),
+    techniques_json:JSON.stringify(e.techniques || []), entry_json:JSON.stringify(e), page_url:location.href || PAGE_URL, user_agent:navigator.userAgent || ''
+  };
+}
+function openSubmitModal(id){
+  const e=findEntry(id); if(!e) return;
+  openModal('Invio dati definitivo', 'I dati di questa riflessione saranno utilizzati all’interno del percorso Persuasione per supportare il tuo miglioramento, leggere trend aggregati e migliorare il programma formativo. Non sostituisce l’eventuale condivisione facoltativa con HR.', '', [
+    {label:'Annulla', kind:'secondary', action:closeModal},
+    {label:'Invia dati definitivamente', kind:'sage', action:()=>submitEntry(id)}
+  ]);
+}
+async function submitEntry(id){
+  const e=findEntry(id); if(!e) return;
+  if(!SUBMISSION_ENDPOINT_URL){
+    closeModal();
+    openModal('Invio dati non disponibile', 'La riflessione è salvata nel diario. Puoi terminare la compilazione; l’invio definitivo sarà gestito quando il canale di raccolta sarà attivo.', '<div class="insight-box">Non devi fare altro in questa schermata. Puoi chiudere la voce oppure tornare alla home.</div>', [
+      {label:'Ho capito', kind:'primary', action:closeModal},
+      {label:'Termina', kind:'secondary', action:()=>{closeModal();showFinalScreen(false);}}
+    ]);
+    return;
+  }
+  try{
+    await fetch(SUBMISSION_ENDPOINT_URL,{method:'POST',mode:'no-cors',keepalive:true,headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payloadForEntry(e))});
+    const entries=loadEntries().map(x=>x.id===id?{...x,sentAt:nowIso()}:x); saveEntries(entries); closeModal(); renderSidebar(); showFinalScreen(true);
+  }catch(err){
+    closeModal();
+    openModal('Invio non riuscito', 'Non sono riuscita a completare l’invio dei dati. La riflessione resta comunque salvata nel diario. Riprova più tardi o segnala il problema al team organizzativo.', '<div class="insight-box">Nessun dato inserito è stato perso.</div>', [{label:'Chiudi', kind:'primary', action:closeModal}]);
+  }
+}
+function showFinalScreen(sent){
+  document.getElementById('stage').innerHTML=`<div class="final-screen"><div class="final-card"><div class="final-icon">✓</div><h1>Terminato</h1><p>${sent?'La riflessione è stata inviata correttamente.':'La riflessione è salvata nel diario.'}</p><div class="hero-actions" style="justify-content:center"><button class="btn btn-primary" onclick="newReflection()">Nuova riflessione</button><button class="btn btn-secondary" onclick="showHome()">Torna alla home</button></div></div></div>`;
+}
+function openHrModal(id){
+  const e=findEntry(id); if(!e) return;
+  const extra = `<div class="field"><label for="hr-email">Email HR</label><input class="field-input" id="hr-email" type="email" placeholder="nome.cognome@inditex.com"></div><div class="insight-box" style="margin-top:12px">La condivisione con HR è facoltativa. Prima conserva la tua voce nel diario; l’invio dati definitivo resta un passaggio separato.</div>`;
+  openModal('Invio facoltativo al tuo HR', 'Si aprirà una mail con il riepilogo della riflessione. Potrai modificarla prima di inviarla.', extra, [
+    {label:'Annulla', kind:'secondary', action:closeModal},
+    {label:'Apri email', kind:'primary', action:()=>sendHrEmail(id)}
+  ]);
+}
+function sendHrEmail(id){
+  const e=findEntry(id); if(!e) return;
+  const to=document.getElementById('hr-email')?.value || '';
+  const subject=encodeURIComponent(`Diario del Cambiamento — ${formatDate(e.date)}`);
+  const body=encodeURIComponent(entryEmailBody(e));
+  closeModal();
+  window.location.href=`mailto:${to}?subject=${subject}&body=${body}`;
+}
+function entryEmailBody(e){
+  const lines=[
+    'DIARIO DEL CAMBIAMENTO — PERSUASIONE', '',
+    `Data: ${formatDate(e.date)}`,`Codice dipendente: ${e.employeeCode || '—'}`,`Negozio / area: ${e.store || '—'}`,`Momento percorso: ${e.session || '—'}`,`Contesto: ${e.context || '—'}`,`Obiettivo: ${e.objective || '—'}`,'',
+    `SITUAZIONE\n${e.situation || '—'}`,'',`FATTO OSSERVABILE\n${e.fact || '—'}`,'',`INTERPRETAZIONE AUTOMATICA\n${e.automaticReading || '—'}`,'',
+    `TECNICHE ALLENATE\n${(e.techniques||[]).join(', ') || '—'}`,'',`PRIMA AVREI...\n${e.before || '—'}`,'',`QUESTA VOLTA HO SCELTO DI...\n${e.chosenAction || '—'}`,'',
+    `REAZIONE / RISULTATO\n${e.othersReaction || '—'}\n${e.result || ''}`,'',`APPRENDIMENTO\n${e.learning || '—'}`,'',`AZIONE ENTRO 48 ORE\n${e.nextAction || '—'}`,'','---','Generato dal Diario del Cambiamento — Store Leader Academy 2026.'
+  ];
+  return lines.join('\n');
+}
+function deleteEntry(id){
+  openModal('Eliminare questa riflessione?', 'L’azione non è reversibile e rimuoverà la voce dal browser.', '', [
+    {label:'Annulla', kind:'secondary', action:closeModal},
+    {label:'Elimina', kind:'danger', action:()=>{const entries=loadEntries().filter(e=>e.id!==id);saveEntries(entries);closeModal();setToast('Riflessione eliminata.');showHome();renderSidebar();}}
+  ]);
+}
+function openModal(title, copy, extraHtml, actions){
+  document.getElementById('modal-title').textContent=title;
+  document.getElementById('modal-copy').textContent=copy;
+  document.getElementById('modal-extra').innerHTML=extraHtml || '';
+  document.getElementById('modal-actions').innerHTML=actions.map((a,i)=>`<button class="btn btn-${a.kind || 'secondary'}" data-modal-action="${i}">${escapeHtml(a.label)}</button>`).join('');
+  actions.forEach((a,i)=>{ setTimeout(()=>{document.querySelector(`[data-modal-action="${i}"]`)?.addEventListener('click',a.action);},0); });
+  document.getElementById('modal-backdrop').classList.add('visible');
+}
+function closeModal(){ document.getElementById('modal-backdrop').classList.remove('visible'); }
+document.getElementById('modal-backdrop').addEventListener('click',e=>{ if(e.target.id==='modal-backdrop') closeModal(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+</script>
+
+
+</body></html>
